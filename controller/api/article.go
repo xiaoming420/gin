@@ -2,13 +2,13 @@ package api
 
 import (
 	"gin/models"
+	"gin/pkg/e"
+	_ "gin/pkg/setting"
+	"github.com/astaxie/beego/validation"
+	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 	"log"
 	"net/http"
-	"github.com/gin-gonic/gin"
-	"github.com/astaxie/beego/validation"
-	"github.com/unknwon/com"
-	"gin/pkg/e"
-	_"gin/pkg/setting"
 	//"gin/pkg/util"
 )
 

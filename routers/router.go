@@ -3,6 +3,7 @@ package routers
 import (
 	"gin/controller/api"
 	"gin/pkg/setting"
+	jwt "gin/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,7 +16,11 @@ func InitRouter() *gin.Engine {
 
 	gin.SetMode(setting.RunMode)
 
+	//http://127.0.0.1:8000/auth
+	r.POST("/auth", api.GetAuth)
+
 	apiv1 := r.Group("/api/v1")
+	apiv1.Use(jwt.JWT())
 	{
 		//http://127.0.0.1:8000/api/v1/articles
 		//获取文章列表
