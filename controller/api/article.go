@@ -1,15 +1,16 @@
 package api
 
 import (
+	"fmt"
 	"gin/models"
 	"gin/pkg/e"
 	_ "gin/pkg/setting"
+	"gin/redis"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/unknwon/com"
 	"log"
 	"net/http"
-	//"gin/pkg/util"
 )
 
 
@@ -67,10 +68,8 @@ func GetArticles(c *gin.Context) {
 	code := e.INVALID_PARAMS
 	if ! valid.HasErrors() {
 		code = e.SUCCESS
-
 		//data["lists"] = models.GetArticles(util.GetPage(c), setting.PageSize, maps)
 		data["total"] = models.GetArticleTotal(maps)
-
 	} else {
 		for _, err := range valid.Errors {
 			log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
